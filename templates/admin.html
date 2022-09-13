@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+@Creado: 10/09/2022 12:37:54 p. m.
+@Autora: Daniela Sierra Vergel 
+-->
+<html>
+    <head>
+        <title>Datos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="icon" type="image/png" href="//danielasierra.com.co/img/logo_black.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+        <script>   var celular = '{{celular}}'; </script>
+        <script src="{{ url_for('static', filename= 'CRUD.js') }}"></script> 
+        
+    </head>
+    <body onload="cruds.view()">
+        <div class="container-fluid">
+            <h1>Sistema de datos</h1>
+            {% if celular %}
+            <div class="row" style="    margin-right: 10px;">
+                
+                
+                <div class="col-sm-12" id="cont_tabla">
+                    <table  class="table  table-striped table-bordered" id="all_table">
+                        <thead id="the"  class="thead-dark">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Celular</th>
+                                <th>Tema</th>
+                                <th>Columna</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbo"></tbody>
+                    </table>
+                    <br><br>
+                    <button style="float:right;" type="button" class="btn btn-success" onclick="tableToExcel('all_table','consultados')">Exportar datos</button>
+                </div>
+                
+            </div>
+            
+            {% endif %}
+        </div>
+    </body>
+</html>

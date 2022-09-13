@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+@Creado: 10/09/2022 12:37:54 p. m.
+@Autora: Daniela Sierra Vergel 
+-->
+<html>
+    <head>
+        <title>Datos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="icon" type="image/png" href="//danielasierra.com.co/img/logo_black.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+        
+        <script>  var list_json = JSON.parse('{{ dat | tojson | safe}}');  var celular = '{{celular}}'; </script>
+        <script src="{{ url_for('static', filename= 'main.js') }}"></script> 
+        <script src="{{ url_for('static', filename= 'CRUD.js') }}"></script> 
+        
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="{{ url_for('static', filename= 'canva.js') }}"></script> 
+    </head>
+    <body onload="all_date.listar();">
+        <div class="container-fluid">
+            <h1>Sistema de datos</h1>
+            {% if celular %}
+            <div class="row" style="    margin-right: 10px;">
+                <div class="col-sm-3">
+                    <div id="cont_temas">
+                        <h4>Selecciona un tema</h4>
+                        <select id="sel_temas" onchange="all_date.selecccion();"></select>
+                    </div>
+                     
+                    <div id="cont_columna">
+                        <br>
+                        <button style="float:right;" type="button" class="btn btn-success" onclick="tableToExcel('all_table','Archivo de datos')">Exportar datos</button>
+                        <br><br>
+                        <h4>Selecciona un columna para ver datos estadísticos</h4>
+                        <select id="sel_col" onchange="all_date.check_columna();"></select><br><br>
+                    </div>
+                </div>
+                
+                <div class="col-sm-9" id="cont_tabla">
+                    <table  class="table  table-striped table-bordered" id="all_table">
+                        <thead id="the"  class="thead-dark"></thead>
+                        <tbody id="tbo"></tbody>
+                    </table>
+                </div>
+
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="chartContainer" style="height: 42vh; width: 100%;"></div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </body>
+</html>

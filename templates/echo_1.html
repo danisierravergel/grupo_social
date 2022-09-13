@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+@Creado: 10/09/2022 12:37:54 p. m.
+@Autora: Daniela Sierra Vergel 
+-->
+<html>
+    <head>
+        <title>Datos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="icon" type="image/png" href="//danielasierra.com.co/img/logo_black.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script>  var list_json = '{{ dat | tojson | safe}}';     </script>
+        <script src="{{ url_for('static', filename= 'ajax.js') }}"></script> 
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'styles.css') }}">
+    </head>
+    <body onload="">
+        <div class="container-fluid">
+            <h1>Sistema de datos</h1>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4>Selecciona un tema</h4>
+                    <select id="sel_temas" onchange="">
+                        {% for i in dat %}
+                            <option value="{{ i }}">{{ dat[i] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-8">
+                
+                </div>
+
+            </div>
+          </div>
+    </body>
+</html>

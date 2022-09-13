@@ -1,0 +1,33 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+@Creado: 12/09/2022 1:54:29 p. m.
+@Autora: Daniela Sierra Vergel 
+*/
+/* 
+    Created on : 12/09/2022, 1:54:29 p. m.
+    Author     : Daniela Sierra Vergel 
+*/
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px #b8b9bf;
+    box-shadow: inset 0 0 6px #b8b9bf;
+    background-color: #b8b9bf;
+}
+
+
+
+h1{text-align: center;}
+#sel_temas{max-width: 100%;}
+.filtrar{background-color: #d4d6ff;}
+#cont_columna, #cont_temas{display: none;}
+#cont_tabla{
+    overflow: auto; 
+    max-height: 47vh;
+}
+#chartContainer{width: 100%;}

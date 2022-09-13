@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="icon" type="image/png" href="//danielasierra.com.co/img/logo_black.png">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'login.css') }}">
+        
+        <title>Login</title>
+        <style>
+        </style>
+    </head>
+    <body id="body_index">
+        
+        <div class="container">
+            <div class="row">
+                <div class="container" id="formContainer">
+                    {% block content %}
+                    <form method='post' class="form-signin" id="login" role="form">
+                        <h2 class="form-signin-heading">Datos</h2>
+                        <label for="celular"><b>Escriba su número de celular</b></label>
+                        <input type="number" class="form-control" name="celular" id="celular" placeholder="311..." required autofocus>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn_entrar">Entrar</button>
+                        <br>
+                        <span style="text-align: center; width: 100%;     float: left;">
+                            <b>Creado por: </b>
+                            Daniela Sierra<br>
+                            <a href="//danielasierra.com.co" target="_black">danielasierra.com.co</a>
+                        </span>
+                    </form>
+                    {% endblock %}
+                    <!--
+                    {% if celular %}
+                        <h2 class="form-signin-heading">{{ celular }}</h2>
+                    {% endif %}-->
+                </div>   
+            </div>
+        </div>
+        
+    </body>
+</html>
