@@ -1,6 +1,6 @@
 from flask import Flask,jsonify,request,render_template, redirect, url_for
 from bs4 import BeautifulSoup
-import requests
+import requests as rq
 from statistics import *
 from scipy import stats
 
@@ -9,7 +9,7 @@ app = Flask(__name__)
 def todo():
     url = 'https://www.datos.gov.co/browse?limitTo=datasets' #limitTo=datasets&sortBy=last_modified
 
-    page = requests.get(url)
+    page = rq.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
     todo = {}
     
@@ -46,9 +46,9 @@ def calcular():
             datass.append(float(x))
             
         iqr = iqr = stats.iqr(datass, interpolation = 'midpoint') 
-    
+        mo = stats.mode(data)
         resp = {'media':mean(datass),
-               'moda': float(mode(data)),
+               'moda': float(mo.mode[0]),
                'mediana':median(datass),
                'st_dev':pstdev(datass),
                'iqr':iqr,
@@ -57,13 +57,14 @@ def calcular():
        
     return resp
 
-@app.route("/", methods=["POST"])
+@app.route("/",methods = ['POST', 'GET'])
 def show_signup_form():
     celular = 0
     if request.method == 'POST':
         celular = request.form['celular']
         return redirect(url_for('echo', celular=celular))
-    return render_template("form.html", celular=celular)
+    else:
+        return render_template("form.html", celular=celular)
 
 if __name__=="__main__":
     app.run(host="0.0.0.0",port=80)

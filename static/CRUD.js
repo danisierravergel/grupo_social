@@ -47,7 +47,6 @@ class crud{
         for (var i in dat) {
             htm += '<tr>';
             var subdatos = JSON.parse(dat[i]);
-            console.log('subdatos', subdatos);
             htm += '<td>' + subdatos['fecha'] + '</td>';
             htm += '<td>' + subdatos['celular'] + '</td>';
             htm += '<td>' + subdatos['tema'] + '</td>';
